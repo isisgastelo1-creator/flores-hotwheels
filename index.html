@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Día de los Carritos</title>
+    <title>Para Mi Amor</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: #030712;
             overflow: hidden;
@@ -20,11 +16,10 @@
             min-height: 100vh;
             font-family: 'Arial', sans-serif;
         }
-        /* Título Superior Estilo Hot Wheels */
         .titulo {
             text-align: center;
             color: #fbbf24;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 900;
             text-shadow: 0 0 15px rgba(251, 191, 36, 0.6), 3px 3px 0px #dc2626;
             margin-bottom: 5px;
@@ -33,201 +28,170 @@
         }
         .subtitulo {
             color: #f3f4f6;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-style: italic;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             text-shadow: 0 0 8px rgba(255,255,255,0.4);
             z-index: 10;
         }
-        /* Contenedor del Ramo */
-        .ramo {
-            position: relative;
-            width: 320px;
-            height: 380px;
-            display: flex;
-            justify-content: center;
-        }
-        /* Hojas y Tallos Verdes */
+        .ramo { position: relative; width: 340px; height: 380px; display: flex; justify-content: center; }
         .tallos {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 220px;
+            position: absolute; bottom: 0; width: 100%; height: 220px;
             background: linear-gradient(transparent, #064e3b 80%);
-            clip-path: polygon(40% 100%, 60% 100%, 55% 0%, 45% 0%);
-            opacity: 0.8;
+            clip-path: polygon(40% 100%, 60% 100%, 55% 0%, 45% 0%); opacity: 0.8;
         }
         .hoja {
-            position: absolute;
-            background: linear-gradient(135deg, #059669, #047857);
-            border-radius: 0 100% 0 100%;
-            transform-origin: bottom left;
-            opacity: 0.9;
+            position: absolute; background: linear-gradient(135deg, #059669, #047857);
+            border-radius: 0 100% 0 100%; transform-origin: bottom left; opacity: 0.9;
         }
         .h1 { width: 45px; height: 25px; bottom: 80px; left: 80px; transform: rotate(-30deg); }
         .h2 { width: 50px; height: 28px; bottom: 110px; right: 70px; transform: rotate(45deg) scaleX(-1); }
-        .h3 { width: 40px; height: 22px; bottom: 140px; left: 100px; transform: rotate(-15deg); }
-        /* Flores Individuales */
+        
+        /* Configuración de las flores */
         .flor {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            animation: balanceo 4s ease-in-out infinite alternate;
+            position: absolute; width: 90px; height: 90px;
+            animation: balanceo 4s ease-in-out infinite alternate; cursor: pointer;
         }
-        /* Posiciones en forma de ramo */
-        .f-izq   { top: 50px; left: 10px; animation-delay: 0.2s; }
-        .f-medio { top: 0px; left: 110px; animation-delay: 0.7s; }
-        .f-der   { top: 60px; right: 10px; animation-delay: 0.5s; }
-        .f-sup   { top: -40px; left: 60px; animation-delay: 0s; }
-        .f-sup2  { top: -30px; left: 160px; animation-delay: 0.9s; }
+        .f-t { top: -40px; left: 40px; animation-delay: 0s; }
+        .f-e { top: -30px; left: 130px; animation-delay: 0.4s; }
+        .f-esp { top: -10px; left: 220px; animation-delay: 0.8s; opacity: 0; pointer-events: none; }
+        .f-a { top: 40px; left: 10px; animation-delay: 0.2s; }
+        .f-m { top: 30px; left: 105px; animation-delay: 0.6s; }
+        .f-o { top: 50px; left: 200px; animation-delay: 0.5s; }
 
-        /* Pétalos Azules de Neón */
-        .petalos-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
+        .petalos-container { position: relative; width: 100%; height: 100%; }
         .petalo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 35px;
-            height: 75px;
-            background: linear-gradient(#38bdf8, #0284c7);
-            border-radius: 50%;
-            transform-origin: top center;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            position: absolute; top: 50%; left: 50%; width: 30px; height: 70px;
+            background: linear-gradient(#38bdf8, #0284c7); border-radius: 50%;
+            transform-origin: top center; box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
         }
-        /* Distribución circular de pétalos */
-        .p1  { transform: translate(-50%, -50%) rotate(0deg); }
-        .p2  { transform: translate(-50%, -50%) rotate(30deg); }
-        .p3  { transform: translate(-50%, -50%) rotate(60deg); }
-        .p4  { transform: translate(-50%, -50%) rotate(90deg); }
-        .p5  { transform: translate(-50%, -50%) rotate(120deg); }
-        .p6  { transform: translate(-50%, -50%) rotate(150deg); }
-        .p7  { transform: translate(-50%, -50%) rotate(180deg); }
-        .p8  { transform: translate(-50%, -50%) rotate(210deg); }
-        .p9  { transform: translate(-50%, -50%) rotate(240deg); }
-        .p10 { transform: translate(-50%, -50%) rotate(270deg); }
-        .p11 { transform: translate(-50%, -50%) rotate(300deg); }
-        .p12 { transform: translate(-50%, -50%) rotate(330deg); }
+        .p1 { transform: translate(-50%, -50%) rotate(0deg); }
+        .p2 { transform: translate(-50%, -50%) rotate(40deg); }
+        .p3 { transform: translate(-50%, -50%) rotate(80deg); }
+        .p4 { transform: translate(-50%, -50%) rotate(120deg); }
+        .p5 { transform: translate(-50%, -50%) rotate(160deg); }
+        .p6 { transform: translate(-50%, -50%) rotate(200deg); }
+        .p7 { transform: translate(-50%, -50%) rotate(240deg); }
+        .p8 { transform: translate(-50%, -50%) rotate(280deg); }
+        .p9 { transform: translate(-50%, -50%) rotate(320deg); }
 
-        /* Centro de la Flor (Círculo de Carrito/Frase) */
         .centro {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(#b45309, #78350f);
-            border: 2px solid #f59e0b;
-            border-radius: 50%;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 38px; height: 38px; background: linear-gradient(#b45309, #78350f);
+            border: 2px solid #f59e0b; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; color: #fff;
+            font-weight: bold; font-size: 1.1rem; box-shadow: inset 0 0 8px rgba(0,0,0,0.6); z-index: 5;
+        }
+
+        /* Cuadrado con fotos flotante */
+        .cuadro-fotos {
+            display: none;
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 290px;
+            background-color: rgba(15, 23, 42, 0.95);
+            border: 3px solid #fbbf24;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);
+            z-index: 100;
+            text-align: center;
+            animation: abrirCuadro 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .cuadro-fotos.activo { display: block; }
+        .cuadro-fotos h3 { color: #fbbf24; margin-bottom: 10px; font-size: 1.2rem; }
+        
+        .galeria {
+            width: 100%;
+            height: 220px;
+            background-color: #000;
+            border-radius: 10px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            border: 1px solid #334155;
+        }
+        .galeria img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .btn-cerrar {
+            margin-top: 12px;
+            background-color: #dc2626;
+            color: white;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 20px;
             font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
-            z-index: 5;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
         }
-        /* Estrellas de fondo de adorno */
-        .estrella {
-            position: absolute;
-            background-color: #fff;
-            border-radius: 50%;
-            animation: parpadeo 2s infinite alternate;
+
+        .capa-fondo {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.7); z-index: 90;
         }
-        /* Animaciones */
-        @keyframes flotar {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        @keyframes balanceo {
-            0% { transform: rotate(-3deg); }
-            100% { transform: rotate(3deg); }
-        }
-        @keyframes parpadeo {
-            0% { opacity: 0.2; }
-            100% { opacity: 1; }
-        }
+        .capa-fondo.activo { display: block; }
+
+        @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes balanceo { 0% { transform: rotate(-3deg); } 100% { transform: rotate(3deg); } }
+        @keyframes abrirCuadro { to { transform: translate(-50%, -50%) scale(1); } }
     </style>
 </head>
 <body>
 
-    <!-- Fondos de Estrellitas -->
-    <div class="estrella" style="top:15%; left:20%; width:3px; height:3px; animation-delay:0.3s;"></div>
-    <div class="estrella" style="top:25%; left:75%; width:4px; height:4px; animation-delay:0.8s;"></div>
-    <div class="estrella" style="top:45%; left:10%; width:2px; height:2px; animation-delay:1.2s;"></div>
-    <div class="estrella" style="top:10%; left:85%; width:3px; height:3px; animation-delay:0.1s;"></div>
-
-    <!-- Mensajes de Encabezado -->
     <h1 class="titulo">Feliz Día De Los Carritos Hot Wheels</h1>
-    <p class="subtitulo">Con Todo Mi Amor Para Ti</p>
+    <p class="subtitulo">Presiona las flores para una sorpresa...</p>
 
-    <!-- Estructura del Ramo -->
     <div class="ramo">
         <div class="tallos"></div>
         <div class="hoja h1"></div>
         <div class="hoja h2"></div>
-        <div class="hoja h3"></div>
 
-        <!-- Flor 1: T -->
-        <div class="flor f-sup">
-            <div class="petalos-container">
-                <div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div>
-                <div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div>
-                <div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div>
-                <div class="petalo p10"></div><div class="petalo p11"></div><div class="petalo p12"></div>
-            </div>
+        <div class="flor f-t" onclick="abrirSorpresa()">
+            <div class="petalos-container"><div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div><div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div><div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div></div>
             <div class="centro">T</div>
         </div>
-
-        <!-- Flor 2: E -->
-        <div class="flor f-sup2">
-            <div class="petalos-container">
-                <div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div>
-                <div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div>
-                <div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div>
-                <div class="petalo p10"></div><div class="petalo p11"></div><div class="petalo p12"></div>
-            </div>
+        <div class="flor f-e" onclick="abrirSorpresa()">
+            <div class="petalos-container"><div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div><div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div><div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div></div>
             <div class="centro">E</div>
         </div>
-
-        <!-- Flor 3: A -->
-        <div class="flor f-izq">
-            <div class="petalos-container">
-                <div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div>
-                <div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div>
-                <div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div>
-                <div class="petalo p10"></div><div class="petalo p11"></div><div class="petalo p12"></div>
-            </div>
+        <div class="flor f-esp"></div>
+        <div class="flor f-a" onclick="abrirSorpresa()">
+            <div class="petalos-container"><div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div><div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div><div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div></div>
             <div class="centro">A</div>
         </div>
-
-        <!-- Flor 4: M -->
-        <div class="flor f-medio">
-            <div class="petalos-container">
-                <div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div>
-                <div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div>
-                <div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div>
-                <div class="petalo p10"></div><div class="petalo p11"></div><div class="petalo p12"></div>
-            </div>
+        <div class="flor f-m" onclick="abrirSorpresa()">
+            <div class="petalos-container"><div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div><div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div><div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div></div>
             <div class="centro">M</div>
         </div>
-
-        <!-- Flor 5: O -->
-        <div class="flor f-der">
-            <div class="petalos-container">
-                <div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div>
-                <div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div>
-                <div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div>
-                <div class="petalo p10"></div><div class="petalo p11"></div><div class="petalo p12"></div>
-            </div>
+        <div class="flor f-o" onclick="abrirSorpresa()">
+            <div class="petalos-container"><div class="petalo p1"></div><div class="petalo p2"></div><div class="petalo p3"></div><div class="petalo p4"></div><div class="petalo p5"></div><div class="petalo p6"></div><div class="petalo p7"></div><div class="petalo p8"></div><div class="petalo p9"></div></div>
             <div class="centro">O</div>
         </div>
     </div>
 
+    <div class="capa-fondo" id="capaOculta" onclick="cerrarSorpresa()"></div>
+    <div class="cuadro-fotos" id="miCuadro">
+        <h3>✨ Momentos Juntos ✨</h3>
+        <div class="galeria">
+            <img src="https://unsplash.com" alt="Nuestra Foto">
+        </div>
+        <button class="btn-cerrar" onclick="cerrarSorpresa()">Cerrar</button>
+    </div>
+
+    <script>
+        function abrirSorpresa() {
+            document.getElementById('miCuadro').classList.add('activo');
+            document.getElementById('capaOculta').classList.add('activo');
+        }
+        function cerrarSorpresa() {
+            document.getElementById('miCuadro').classList.remove('activo');
+            document.getElementById('capaOculta').classList.remove('activo');
+        }
+    </script>
 </body>
 </html>
